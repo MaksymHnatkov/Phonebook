@@ -28,13 +28,25 @@ class Accounts (Toplevel):
 
         self.updButton = Button(self.bottom, text=" Редактировать ", font='arial 18 bold')
         self.updButton.place(x=20, y=55)
-        self.delButton = Button(self.bottom, text=" Удалить ", font='arial 18 bold')
-        self.delButton.place(x=210, y=55)
-        self.quitButton = Button(self.bottom, text=" Выход ", font='arial 18 bold')
+        self.delButton = Button(self.bottom, text="   Удалить   ", font='arial 18 bold')
+        self.delButton.place(x=200, y=55)
+        self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold')
         self.quitButton.place(x=340, y=55)
+        self.showButton = Button(self.bottom, text="                Детали                ", font='arial 18 bold')
+        self.showButton.place(x=115, y=15)
 
-        self.listBox = Listbox(self.mid, width=41, height=16)
-        self.listBox.grid(row=0, column=0, padx=(40,0))
+
+        self.scroll = Scrollbar(self.mid, orient=VERTICAL, )
+        self.listBox = Listbox(self.mid, width=48, height=16)
+        self.listBox.grid(row=0, column=0, padx=(2,0))
+
+        self.scroll.config(command=self.listBox.yview)
+        self.listBox.config(yscrollcommand=self.scroll.set)
+
+        self.scroll.grid(row=0, column=1, sticky=N + S)
+
+
+
 
 
 

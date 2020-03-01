@@ -28,7 +28,7 @@ class Application(object):
         self.searchButton = Button(self.bottom, text=" Найти контакт ", font='arial 26 bold', command = self.my_accounts)
         self.searchButton.place(x=226, y=150)
         self.quitButton = Button(self.bottom, text=" Выход ", font='arial 26 bold')
-        self.quitButton.place(x=276, y=230)
+        self.quitButton.place(x=274, y=230)
 
     def my_accounts(self):
         accounts = Accounts()
