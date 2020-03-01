@@ -1,4 +1,9 @@
 from tkinter import *
+from tkinter import messagebox as mb
+import sqlite3
+
+conn = sqlite3.connect('phonebook.db')
+curs = conn.cursor()
 
 class AddAccounts (Toplevel):
     def __init__(self):
@@ -23,14 +28,12 @@ class AddAccounts (Toplevel):
         self.label_name = Label(self.bottom, text="Имя", font='arial 15', fg='white', bg='#c2c0ba')
         self.label_name.place(x=100, y=43)
         self.entry_name = Entry(self.bottom, width=30, bd=4)
-        self.entry_name.insert(0, "Введите имя")
         self.entry_name.place(x=147, y=40)
 
         # Номер
         self.label_number = Label(self.bottom, text="Номер телефона", font='arial 15', fg='white', bg='#c2c0ba')
         self.label_number.place(x=7, y=83)
         self.entry_number = Entry(self.bottom, width=30, bd=4)
-        self.entry_number.insert(0, "Введите номер")
         self.entry_number.place(x=147, y=80)
 
         # Комментарии
@@ -40,13 +43,30 @@ class AddAccounts (Toplevel):
         self.entry_comment.place(x=147, y=120)
 
         # Кнопки
-        saveButton = Button(self.bottom, text="  Сохранить контакт  ", font='arial 20 bold')
+        saveButton = Button(self.bottom, text="  Сохранить контакт  ", font='arial 20 bold', command=self.add_contact)
         saveButton.place(x=170, y=275)
         quitButton = Button(self.bottom, text="  Выход  ", font='arial 20 bold', command=self.destroy)
         quitButton.place(x=230, y=315)
 
-        def exit(self):
-            self.destroy()
+    def exit(self):
+        self.destroy()
+
+    def add_contact(self):
+        answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
+        if answer == True:
+            name = self.entry_name.get()
+            self.entry_name.delete(0, END)
+            number = self.entry_number.get()
+            self.entry_number.delete(0, END)
+            comment = self.entry_comment.get(1.0, 'end -1c')
+            self.entry_comment.delete(0,END)
+
+
+
+
+
+
+
 
 
 

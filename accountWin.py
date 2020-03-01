@@ -4,7 +4,6 @@ import sqlite3
 conn = sqlite3.connect('phonebook.db')
 curs = conn.cursor()
 
-
 class Accounts (Toplevel):
     def __init__(self):
         Toplevel.__init__(self)
@@ -45,8 +44,8 @@ class Accounts (Toplevel):
 
         self.scroll.grid(row=0, column=1, sticky=N + S)
 
-        def exit(self):
-            self.destroy()
+    def exit(self):
+        self.destroy()
 
 
 
