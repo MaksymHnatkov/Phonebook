@@ -23,12 +23,12 @@ class Application(object):
         self.prod.place(x=255, y=350)
 
         # Кнопки
-        self.addButton = Button(self.bottom, text=" Создать контакт ", font='arial 20 bold')
-        self.addButton.place(x=235, y=70)
-        self.searchButton = Button(self.bottom, text=" Найти контакт ", font='arial 20 bold', command = self.my_accounts)
-        self.searchButton.place(x=248, y=120)
-        self.quitButton = Button(self.bottom, text=" Выход ", font='arial 20 bold')
-        self.quitButton.place(x=282, y=170)
+        self.addButton = Button(self.bottom, text=" Создать контакт ", font='arial 26 bold')
+        self.addButton.place(x=210, y=70)
+        self.searchButton = Button(self.bottom, text=" Найти контакт ", font='arial 26 bold', command = self.my_accounts)
+        self.searchButton.place(x=226, y=150)
+        self.quitButton = Button(self.bottom, text=" Выход ", font='arial 26 bold')
+        self.quitButton.place(x=276, y=230)
 
     def my_accounts(self):
         accounts = Accounts()
