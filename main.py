@@ -1,6 +1,6 @@
 from tkinter import *
 from accountWin import Accounts
-
+from addaccount import AddAccounts
 
 class Application(object):
     def __init__(self, master):
@@ -23,15 +23,19 @@ class Application(object):
         self.prod.place(x=255, y=350)
 
         # Кнопки
-        self.addButton = Button(self.bottom, text=" Создать контакт ", font='arial 26 bold')
+        self.addButton = Button(self.bottom, text=" Создать контакт ", font='arial 26 bold', command=self.add_account)
         self.addButton.place(x=210, y=70)
         self.searchButton = Button(self.bottom, text=" Найти контакт ", font='arial 26 bold', command = self.my_accounts)
         self.searchButton.place(x=226, y=150)
-        self.quitButton = Button(self.bottom, text=" Выход ", font='arial 26 bold')
+        self.quitButton = Button(self.bottom, text=" Выход ", font='arial 26 bold', command=self.master.destroy)
         self.quitButton.place(x=274, y=230)
 
+    def exit(self):
+        self.master.destroy()
     def my_accounts(self):
         accounts = Accounts()
+    def add_account(self):
+        add_contact = AddAccounts()
 
 
 def main():

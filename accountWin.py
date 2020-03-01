@@ -17,7 +17,7 @@ class Accounts (Toplevel):
         self.top.pack(fill=X)
         self.mid = Frame(self, height=260, bg='white')
         self.mid.pack(fill=X)
-        self.bottom = Frame(self, height=110, bg='grey')
+        self.bottom = Frame(self, height=110, bg='#c2c0ba')
         self.bottom.pack(fill=X)
 
         self.heading = Label(self.top, text='Контакты', font='arial 20 bold', bg='blue', fg='white')
@@ -30,7 +30,7 @@ class Accounts (Toplevel):
         self.updButton.place(x=20, y=55)
         self.delButton = Button(self.bottom, text="   Удалить   ", font='arial 18 bold')
         self.delButton.place(x=200, y=55)
-        self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold')
+        self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold', command=self.destroy)
         self.quitButton.place(x=340, y=55)
         self.showButton = Button(self.bottom, text="                Детали                ", font='arial 18 bold')
         self.showButton.place(x=115, y=15)
@@ -44,6 +44,9 @@ class Accounts (Toplevel):
         self.listBox.config(yscrollcommand=self.scroll.set)
 
         self.scroll.grid(row=0, column=1, sticky=N + S)
+
+        def exit(self):
+            self.destroy()
 
 
 
