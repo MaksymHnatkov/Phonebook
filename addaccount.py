@@ -52,14 +52,26 @@ class AddAccounts (Toplevel):
         self.destroy()
 
     def add_contact(self):
-        answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
-        if answer == True:
-            name = self.entry_name.get()
-            self.entry_name.delete(0, END)
-            number = self.entry_number.get()
-            self.entry_number.delete(0, END)
-            comment = self.entry_comment.get(1.0, 'end -1c')
-            self.entry_comment.delete(END)
+        name = self.entry_name.get()
+        number = self.entry_number.get()
+        comment = self.entry_comment.get(1.0, 'end -1c')
+
+        if name != "" and number != "":
+            try:
+                query = "insert into 'phonebook' (person_name, tel_number, comments) values(?,?,?)"
+                curs.execute(query, (name, number, comment))
+                answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
+                if answer == True:
+                    self.entry_name.delete(0, END)
+                    self.entry_number.delete(0, END)
+                    self.entry_comment.delete(END)
+                    conn.commit()
+                    mb.showinfo("Сохранение", "Контакт успешно добавлен", icon='info')
+            except EXCEPTION as e:
+                mb.showerror("Ошибка!", str(e))
+        else:
+            mb.showerror("Ошибка!", "Заполните все поля!", icon='warning')
+
 
 
 
