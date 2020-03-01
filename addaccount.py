@@ -59,7 +59,9 @@ class AddAccounts (Toplevel):
             number = self.entry_number.get()
             self.entry_number.delete(0, END)
             comment = self.entry_comment.get(1.0, 'end -1c')
-            self.entry_comment.delete(0,END)
+            self.entry_comment.delete(END)
+
+
 
 
 
