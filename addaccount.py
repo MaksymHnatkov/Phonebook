@@ -29,7 +29,7 @@ class AddAccounts (Toplevel):
         self.label_name.place(x=100, y=43)
         self.entry_name = Entry(self.bottom, width=30, bd=4)
         self.entry_name.place(x=147, y=40)
-
+        
         # Номер
         self.label_number = Label(self.bottom, text="Номер телефона", font='arial 15', fg='white', bg='#c2c0ba')
         self.label_number.place(x=7, y=83)
