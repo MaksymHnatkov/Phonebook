@@ -78,7 +78,7 @@ class AddAccounts (Toplevel):
             except EXCEPTION as e:
                 mb.showerror("Ошибка!", str(e))
         else:
-            mb.showerror("Ошибка!", "Заполните все поля!", icon='warning')
+            mb.showerror("Ошибка!", "Заполните поля Имя и Номер телефона!", icon='warning')
 
 
 
