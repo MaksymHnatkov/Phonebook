@@ -63,12 +63,12 @@ class AddAccounts (Toplevel):
         surname = self.entry_surname.get()
         number = self.entry_number.get()
         comment = self.entry_comment.get()
-        match = re.fullmatch(r'\D+',number)
+        match = re.fullmatch(r'\D+', number)
 
         if name != "" and number != "":
             try:
                 query = "insert into 'phonebook' (person_name, person_surname, tel_number, comments) values(?,?,?,?)"
-                curs.execute(query, (name, surname, number, comment))
+                curs.execute(query, (name, surname, str(number), comment))
                 answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
                 if answer == True and match == None:
                     self.entry_name.delete(0, END)
@@ -78,7 +78,7 @@ class AddAccounts (Toplevel):
                     conn.commit()
                     mb.showinfo("Сохранение", "Контакт успешно добавлен", icon='info')
                 else:
-                    mb.showerror("Ошибка!", "Введите только цифры в поле номера!", icon='warning')
+                    mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
                     self.entry_number.delete(0, END)
 
             except EXCEPTION as e:

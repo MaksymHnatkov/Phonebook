@@ -31,8 +31,10 @@ class Accounts (Toplevel):
         self.delButton.place(x=200, y=55)
         self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold', command=self.destroy)
         self.quitButton.place(x=340, y=55)
-        self.showButton = Button(self.bottom, text="                Детали                ", font='arial 18 bold')
-        self.showButton.place(x=115, y=15)
+        self.showButton = Button(self.bottom, text="                 Детали                 ", font='arial 18 bold')
+        self.showButton.place(x=195, y=15)
+        self.updButton = Button(self.bottom, text="         Поиск         ", font='arial 18 bold')
+        self.updButton.place(x=20, y=15)
 
 
         self.scroll = Scrollbar(self.mid, orient=VERTICAL, )
