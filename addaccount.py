@@ -26,21 +26,27 @@ class AddAccounts (Toplevel):
 
         # Имя
         self.label_name = Label(self.bottom, text="Имя", font='arial 15', fg='white', bg='#c2c0ba')
-        self.label_name.place(x=100, y=43)
+        self.label_name.place(x=98, y=43)
         self.entry_name = Entry(self.bottom, width=30, bd=4)
         self.entry_name.place(x=147, y=40)
+
+        # Фамилия
+        self.label_surname = Label(self.bottom, text="Фамилия", font='arial 15', fg='white', bg='#c2c0ba')
+        self.label_surname.place(x=62, y=83)
+        self.entry_surname = Entry(self.bottom, width=30, bd=4)
+        self.entry_surname.place(x=147, y=80)
         
         # Номер
         self.label_number = Label(self.bottom, text="Номер телефона", font='arial 15', fg='white', bg='#c2c0ba')
-        self.label_number.place(x=7, y=83)
+        self.label_number.place(x=7, y=123)
         self.entry_number = Entry(self.bottom, width=30, bd=4)
-        self.entry_number.place(x=147, y=80)
+        self.entry_number.place(x=147, y=120)
 
         # Комментарии
         self.label_comment = Label(self.bottom, text="Комментарии", font='arial 15', fg='white', bg='#c2c0ba')
-        self.label_comment.place(x=32, y=123)
-        self.entry_comment = Text(self.bottom, width=39, height=8, bd=2)
-        self.entry_comment.place(x=147, y=120)
+        self.label_comment.place(x=32, y=163)
+        self.entry_comment = Entry(self.bottom, width=30, bd=4)
+        self.entry_comment.place(x=147, y=160)
 
         # Кнопки
         saveButton = Button(self.bottom, text="  Сохранить контакт  ", font='arial 20 bold', command=self.add_contact)
@@ -53,18 +59,20 @@ class AddAccounts (Toplevel):
 
     def add_contact(self):
         name = self.entry_name.get()
+        surname = self.entry_surname.get()
         number = self.entry_number.get()
-        comment = self.entry_comment.get(1.0, 'end -1c')
+        comment = self.entry_comment.get()
 
         if name != "" and number != "":
             try:
-                query = "insert into 'phonebook' (person_name, tel_number, comments) values(?,?,?)"
-                curs.execute(query, (name, number, comment))
+                query = "insert into 'phonebook' (person_name, person_surname, tel_number, comments) values(?,?,?,?)"
+                curs.execute(query, (name,surname, number, comment))
                 answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
                 if answer == True:
                     self.entry_name.delete(0, END)
+                    self.entry_surname.delete(0, END)
                     self.entry_number.delete(0, END)
-                    self.entry_comment.delete(END)
+                    self.entry_comment.delete(0, END)
                     conn.commit()
                     mb.showinfo("Сохранение", "Контакт успешно добавлен", icon='info')
             except EXCEPTION as e:
