@@ -42,6 +42,11 @@ class Accounts (Toplevel):
         self.scroll.config(command=self.listBox.yview)
         self.listBox.config(yscrollcommand=self.scroll.set)
 
+        people = curs.execute('select * from "phonebook"').fetchall()
+        count = 0
+        for i in people:
+            self.listBox.insert(count, str(i[1])+ " " +str(i[2])+ " " + str(i[3])+ " " + str(i[4]))
+
         self.scroll.grid(row=0, column=1, sticky=N + S)
 
     def exit(self):
