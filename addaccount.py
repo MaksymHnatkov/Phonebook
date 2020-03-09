@@ -67,11 +67,11 @@ class AddAccounts(Toplevel):
         match = re.fullmatch(r'\D+', number)
 
         if name != "" and number != "":
+            answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
             try:
-                query = "insert into 'phonebook' (person_name, person_surname, tel_number, comments) values(?,?,?,?)"
-                curs.execute(query, (name.upper(), surname.upper(), str(number), comment))
-                answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
                 if answer == True and match == None:
+                    query = "insert into 'phonebook' (person_name, person_surname, tel_number, comments) values(?,?,?,?)"
+                    curs.execute(query, (name.upper(), surname.upper(), str(number), comment))
                     self.entry_name.delete(0, END)
                     self.entry_surname.delete(0, END)
                     self.entry_number.delete(0, END)
