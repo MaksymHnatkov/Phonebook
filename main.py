@@ -9,7 +9,7 @@ class Application(object):
 
         self.top = Frame(master, height=150, bg='blue')
         self.top.pack(fill=X)
-        self.bottom = Frame(master, height=500, bg='white')
+        self.bottom = Frame(master, height=500, bg='#abedbc')
         self.bottom.pack(fill=X)
 
         # Иконка
@@ -20,7 +20,7 @@ class Application(object):
         # Дизайн
         self.heading = Label(self.top, text='Телефонная книга', font='arial 24 bold', bg='blue', fg='white')
         self.heading.place(x=220, y=50)
-        self.prod = Label(self.bottom, text=' Developed by M.Hnatkov ', font='arial 12 bold', bg='white', fg='grey')
+        self.prod = Label(self.bottom, text=' Developed by M.Hnatkov ', font='arial 12 bold', bg='#abedbc', fg='grey')
         self.prod.place(x=255, y=350)
 
         # Кнопки
