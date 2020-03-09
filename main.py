@@ -25,8 +25,8 @@ class Application(object):
         # Кнопки
         self.addButton = Button(self.bottom, text=" Создать контакт ", font='arial 26 bold', command=self.add_account)
         self.addButton.place(x=210, y=70)
-        self.searchButton = Button(self.bottom, text=" Найти контакт ", font='arial 26 bold', command = self.my_accounts)
-        self.searchButton.place(x=226, y=150)
+        self.searchButton = Button(self.bottom, text=" Контакты ", font='arial 26 bold', command = self.my_accounts)
+        self.searchButton.place(x=255, y=150)
         self.quitButton = Button(self.bottom, text=" Выход ", font='arial 26 bold', command=self.master.destroy)
         self.quitButton.place(x=274, y=230)
 

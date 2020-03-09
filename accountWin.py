@@ -1,5 +1,6 @@
 from tkinter import *
 import sqlite3
+from updAccount import Update
 
 conn = sqlite3.connect('phonebook.db')
 curs = conn.cursor()
@@ -25,7 +26,7 @@ class Accounts (Toplevel):
         self.top_image_label = Label(self.top, image=self.top_image, bg='blue')
         self.top_image_label.place(x=100, y=8)
 
-        self.updButton = Button(self.bottom, text=" Редактировать ", font='arial 18 bold')
+        self.updButton = Button(self.bottom, text=" Редактировать ", font='arial 18 bold', command = self.update_function)
         self.updButton.place(x=20, y=55)
         self.delButton = Button(self.bottom, text="   Удалить   ", font='arial 18 bold')
         self.delButton.place(x=200, y=55)
@@ -47,12 +48,28 @@ class Accounts (Toplevel):
         people = curs.execute('select * from "phonebook"').fetchall()
         count = 0
         for i in people:
-            self.listBox.insert(count, str(i[1])+ " " +str(i[2])+ " " + str(i[3])+ " " + str(i[4]))
+            self.listBox.insert(count, str(i[0])+ ". " +str(i[1])+ " " + str(i[2]))
+            count += 1
 
         self.scroll.grid(row=0, column=1, sticky=N + S)
 
     def exit(self):
         self.destroy()
+
+    def update_function(self):
+        selected_item = self.listBox.curselection()
+        person = self.listBox.get(selected_item)
+        person_id = person.split(".")[0]
+
+        updatepage = Update(person_id)
+
+
+
+
+
+
+
+
 
 
 
