@@ -92,6 +92,7 @@ class Accounts (Toplevel):
 
     def search(self):
         search_page = Search()
+        self.destroy()
 
 
 
