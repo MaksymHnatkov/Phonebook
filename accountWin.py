@@ -3,6 +3,7 @@ import sqlite3
 from tkinter import messagebox as mb
 from updAccount import Update
 from details import Details
+from searchMod import Search
 
 conn = sqlite3.connect('phonebook.db')
 curs = conn.cursor()
@@ -36,8 +37,8 @@ class Accounts (Toplevel):
         self.quitButton.place(x=340, y=55)
         self.showButton = Button(self.bottom, text="                 Детали                 ", font='arial 18 bold', command = self.show_details)
         self.showButton.place(x=195, y=15)
-        self.updButton = Button(self.bottom, text="         Поиск         ", font='arial 18 bold')
-        self.updButton.place(x=20, y=15)
+        self.searchButton = Button(self.bottom, text="         Поиск         ", font='arial 18 bold', command = self.search)
+        self.searchButton.place(x=20, y=15)
 
 
         self.scroll = Scrollbar(self.mid, orient=VERTICAL, )
@@ -88,6 +89,9 @@ class Accounts (Toplevel):
 
             except Exception as e:
                 mb.showerror("Ошибка!", str(e))
+
+    def search(self):
+        search_page = Search()
 
 
 

@@ -14,10 +14,6 @@ class Update(Toplevel):
         self.title("Редактирование контакта")
         self.resizable(False, False)
 
-        self.geometry("550x450+400+150")
-        self.title("Редактирование контакта")
-        self.resizable(False, False)
-
         query = "select * from phonebook where person_id = '{}'".format(person_id)
         result = curs.execute(query).fetchone()
         self.person_id = person_id
