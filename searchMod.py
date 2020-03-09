@@ -13,7 +13,7 @@ class Search(Toplevel):
     def __init__(self):
         Toplevel.__init__(self)
 
-        self.geometry("550x650+400+150")
+        self.geometry("550x700+400+150")
         self.title("Поиск")
         self.resizable(False, False)
 
@@ -23,7 +23,7 @@ class Search(Toplevel):
         self.search_frame.pack(fill=X)
         self.mid = Frame(self, height=250, bg='#c2c0ba')
         self.mid.pack(fill=X)
-        self.bottom = Frame(self, height=150, bg='#c2c0ba')
+        self.bottom = Frame(self, height=200, bg='#c2c0ba')
         self.bottom.pack(fill=X)
 
         self.heading = Label(self.top, text='Поиск контакта', font='arial 20 bold', bg='blue', fg='white')
@@ -56,11 +56,11 @@ class Search(Toplevel):
         del_button = Button(self.bottom, text="          Удалить          ", font='arial 20 bold',
                               command=self.delete_person)
         del_button.place(x=175, y=60)
-        clean_button = Button(self.bottom, text="Очистить поиск", font='arial 20 bold',
+        clean_button = Button(self.bottom, text="   Очистить поиск   ", font='arial 20 bold',
                             command=self.clean)
-        clean_button.place(x=5, y=20)
+        clean_button.place(x=177, y=100)
         quit_button = Button(self.bottom, text="         Выход         ", font='arial 20 bold', command=self.destroy)
-        quit_button.place(x=190, y=100)
+        quit_button.place(x=190, y=140)
 
         self.scroll = Scrollbar(self.mid, orient=VERTICAL)
         self.listBox = Listbox(self.mid, width=58, height=15)
