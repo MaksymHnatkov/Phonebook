@@ -25,7 +25,7 @@ class Details(Toplevel):
 
         self.top = Frame(self, height=100, bg='blue')
         self.top.pack(fill=X)
-        self.bottom = Frame(self, height=350, bg='#c2c0ba')
+        self.bottom = Frame(self, height=350, bg='#abedbc')
         self.bottom.pack(fill=X)
 
         self.heading = Label(self.top, text='      Детали контакта', font='arial 20 bold', bg='blue', fg='white')

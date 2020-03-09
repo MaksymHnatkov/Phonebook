@@ -18,9 +18,9 @@ class Accounts (Toplevel):
 
         self.top = Frame(self, height=80, bg='blue')
         self.top.pack(fill=X)
-        self.mid = Frame(self, height=260, bg='white')
+        self.mid = Frame(self, height=260, bg='#abedbc')
         self.mid.pack(fill=X)
-        self.bottom = Frame(self, height=110, bg='#c2c0ba')
+        self.bottom = Frame(self, height=110, bg='#abedbc')
         self.bottom.pack(fill=X)
 
         self.heading = Label(self.top, text='Контакты', font='arial 20 bold', bg='blue', fg='white')

@@ -31,7 +31,7 @@ class Application(object):
         self.findButton = Button(self.bottom, text="    Найти контакт    ", font='arial 26 bold', command=self.search)
         self.findButton.place(x=200, y=210)
         self.quitButton = Button(self.bottom, text=" Выход ", font='arial 26 bold', command=self.master.destroy)
-        self.quitButton.place(x=274, y=280)
+        self.quitButton.place(x=272, y=280)
 
     def exit(self):
         self.master.destroy()

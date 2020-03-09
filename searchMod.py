@@ -19,11 +19,11 @@ class Search(Toplevel):
 
         self.top = Frame(self, height=100, bg='blue')
         self.top.pack(fill=X)
-        self.search_frame = Frame(self, height=150, bg='#c2c0ba')
+        self.search_frame = Frame(self, height=150, bg='#abedbc')
         self.search_frame.pack(fill=X)
-        self.mid = Frame(self, height=250, bg='#c2c0ba')
+        self.mid = Frame(self, height=250, bg='#abedbc')
         self.mid.pack(fill=X)
-        self.bottom = Frame(self, height=200, bg='#c2c0ba')
+        self.bottom = Frame(self, height=200, bg='#abedbc')
         self.bottom.pack(fill=X)
 
         self.heading = Label(self.top, text='Поиск контакта', font='arial 20 bold', bg='blue', fg='white')
