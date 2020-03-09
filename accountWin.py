@@ -1,6 +1,7 @@
 from tkinter import *
 import sqlite3
 from updAccount import Update
+from details import Details
 
 conn = sqlite3.connect('phonebook.db')
 curs = conn.cursor()
@@ -32,7 +33,7 @@ class Accounts (Toplevel):
         self.delButton.place(x=200, y=55)
         self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold', command=self.destroy)
         self.quitButton.place(x=340, y=55)
-        self.showButton = Button(self.bottom, text="                 Детали                 ", font='arial 18 bold')
+        self.showButton = Button(self.bottom, text="                 Детали                 ", font='arial 18 bold', command = self.show_details)
         self.showButton.place(x=195, y=15)
         self.updButton = Button(self.bottom, text="         Поиск         ", font='arial 18 bold')
         self.updButton.place(x=20, y=15)
@@ -62,6 +63,15 @@ class Accounts (Toplevel):
         person_id = person.split(".")[0]
 
         updatepage = Update(person_id)
+
+    def show_details(self):
+        selected_item = self.listBox.curselection()
+        person = self.listBox.get(selected_item)
+        person_id = person.split(".")[0]
+
+        details_page = Details(person_id)
+
+
 
 
 
