@@ -78,7 +78,7 @@ class Update(Toplevel):
 
         if name != "" and number != "":
             try:
-                query = "update phonebook set person_name = '{}', person_surname = '{}', tel_number = '{}', comments = '{}' where person_id = {}".format(name, surname, number, comment,id)
+                query = "update phonebook set person_name = '{}', person_surname = '{}', tel_number = '{}', comments = '{}' where person_id = {}".format(name.upper(), surname.upper(), number, comment,id)
                 curs.execute(query)
                 answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
                 if answer == True and match == None:

@@ -68,7 +68,7 @@ class AddAccounts (Toplevel):
         if name != "" and number != "":
             try:
                 query = "insert into 'phonebook' (person_name, person_surname, tel_number, comments) values(?,?,?,?)"
-                curs.execute(query, (name, surname, str(number), comment))
+                curs.execute(query, (name.upper(), surname.upper(), str(number), comment))
                 answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
                 if answer == True and match == None:
                     self.entry_name.delete(0, END)

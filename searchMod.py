@@ -68,7 +68,7 @@ class Search(Toplevel):
 
     def search_by_name(self):
         name = self.entry_name.get()
-        result = curs.execute("select * from phonebook where person_name regexp (?)", (name,))
+        result = curs.execute("select * from phonebook where person_name regexp (?)", (name.upper(),))
         count = 0
         for i in result:
             self.listBox.insert(count,str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
@@ -76,7 +76,7 @@ class Search(Toplevel):
 
     def search_by_surname(self):
         surname = self.entry_surname.get()
-        result = curs.execute("select * from phonebook where person_surname regexp (?)", (surname,))
+        result = curs.execute("select * from phonebook where person_surname regexp (?)", (surname.upper(),))
         count = 0
         for i in result:
             self.listBox.insert(count, str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
@@ -103,7 +103,7 @@ class Search(Toplevel):
         self.destroy()
 
     def clean(self):
-        self.listBox.delete(0,END)
+        self.listBox.delete(END)
         self.entry_name.delete(0,END)
         self.entry_surname.delete(0, END)
         self.entry_number.delete(0, END)
