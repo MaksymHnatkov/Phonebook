@@ -81,7 +81,7 @@ class AddAccounts (Toplevel):
                     mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
                     self.entry_number.delete(0, END)
 
-            except EXCEPTION as e:
+            except Exception as e:
                 mb.showerror("Ошибка!", str(e))
         else:
             mb.showerror("Ошибка!", "Заполните поля Имя и Номер телефона!", icon='warning')

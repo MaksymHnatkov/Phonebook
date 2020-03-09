@@ -20,6 +20,7 @@ class Update(Toplevel):
 
         query = "select * from phonebook where person_id = '{}'".format(person_id)
         result = curs.execute(query).fetchone()
+        self.person_id = person_id
         person_name = result[1]
         person_surname = result[2]
         person_number = result[3]
@@ -72,7 +73,29 @@ class Update(Toplevel):
 
 
     def update_person(self):
-        pass
+        id = self.person_id
+        name = self.entry_name.get()
+        surname = self.entry_surname.get()
+        number = self.entry_number.get()
+        comment = self.entry_comment.get()
+        match = re.fullmatch(r'\D+', number)
+
+        if name != "" and number != "":
+            try:
+                query = "update phonebook set person_name = '{}', person_surname = '{}', tel_number = '{}', comments = '{}' where person_id = {}".format(name, surname, number, comment,id)
+                curs.execute(query)
+                answer = mb.askyesno(title="Сохранить", message="Сохранить данные?")
+                if answer == True and match == None:
+                    conn.commit()
+                    mb.showinfo("Сохранение", "Контакт успешно добавлен", icon='info')
+                else:
+                    mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
+                    self.entry_number.delete(0, END)
+
+            except Exception as e:
+                mb.showerror("Ошибка!", str(e))
+        else:
+            mb.showerror("Ошибка!", "Заполните поля Имя и Номер телефона!", icon='warning')
 
 
 
