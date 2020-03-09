@@ -31,7 +31,7 @@ class Accounts (Toplevel):
         self.updButton = Button(self.bottom, text=" Редактировать ", font='arial 18 bold', command = self.update_function)
         self.updButton.place(x=20, y=55)
         self.delButton = Button(self.bottom, text="   Удалить   ", font='arial 18 bold', command = self.delete_person)
-        self.delButton.place(x=200, y=55)
+        self.delButton.place(x=195, y=55)
         self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold', command=self.destroy)
         self.quitButton.place(x=340, y=55)
         self.showButton = Button(self.bottom, text="                 Детали                 ", font='arial 18 bold', command = self.show_details)
