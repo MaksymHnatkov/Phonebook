@@ -1,5 +1,6 @@
 from tkinter import *
 import sqlite3
+from tkinter import messagebox as mb
 from updAccount import Update
 from details import Details
 
@@ -29,7 +30,7 @@ class Accounts (Toplevel):
 
         self.updButton = Button(self.bottom, text=" Редактировать ", font='arial 18 bold', command = self.update_function)
         self.updButton.place(x=20, y=55)
-        self.delButton = Button(self.bottom, text="   Удалить   ", font='arial 18 bold')
+        self.delButton = Button(self.bottom, text="   Удалить   ", font='arial 18 bold', command = self.delete_person)
         self.delButton.place(x=200, y=55)
         self.quitButton = Button(self.bottom, text="   Выход   ", font='arial 18 bold', command=self.destroy)
         self.quitButton.place(x=340, y=55)
@@ -70,6 +71,23 @@ class Accounts (Toplevel):
         person_id = person.split(".")[0]
 
         details_page = Details(person_id)
+
+    def delete_person(self):
+        selected_item = self.listBox.curselection()
+        person = self.listBox.get(selected_item)
+        person_id = person.split(".")[0]
+
+        query = "delete from phonebook where person_id = {}".format(person_id)
+        answer = mb.askyesno(title="Удалить", message="Удалить контакт?")
+        if answer == True:
+            try:
+                curs.execute(query)
+                conn.commit()
+                mb.showinfo("Success", "Контакт удалён")
+                self.destroy()
+
+            except Exception as e:
+                mb.showerror("Ошибка!", str(e))
 
 
 
