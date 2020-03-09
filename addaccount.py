@@ -6,7 +6,8 @@ import re
 conn = sqlite3.connect('phonebook.db')
 curs = conn.cursor()
 
-class AddAccounts (Toplevel):
+
+class AddAccounts(Toplevel):
     def __init__(self):
         Toplevel.__init__(self)
 
@@ -36,7 +37,7 @@ class AddAccounts (Toplevel):
         self.label_surname.place(x=62, y=83)
         self.entry_surname = Entry(self.bottom, width=30, bd=4)
         self.entry_surname.place(x=147, y=80)
-        
+
         # Номер
         self.label_number = Label(self.bottom, text="Номер телефона", font='arial 15', fg='white', bg='#c2c0ba')
         self.label_number.place(x=7, y=123)

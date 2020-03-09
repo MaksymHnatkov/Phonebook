@@ -92,6 +92,3 @@ class Details(Toplevel):
 
             except Exception as e:
                 mb.showerror("Ошибка!", str(e))
-
-
-

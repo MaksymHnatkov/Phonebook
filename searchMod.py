@@ -8,6 +8,7 @@ conn = sqlite3.connect('phonebook.db')
 curs = conn.cursor()
 conn.create_function('regexp', 2, lambda x, y: 1 if re.search(x, y) else 0)
 
+
 class Search(Toplevel):
     def __init__(self):
         Toplevel.__init__(self)
@@ -25,7 +26,6 @@ class Search(Toplevel):
         self.bottom = Frame(self, height=150, bg='#c2c0ba')
         self.bottom.pack(fill=X)
 
-
         self.heading = Label(self.top, text='Поиск контакта', font='arial 20 bold', bg='blue', fg='white')
         self.heading.place(x=210, y=45)
         self.top_image = PhotoImage(file='icons/accounts.png')
@@ -39,19 +39,26 @@ class Search(Toplevel):
         self.entry_number = Entry(self.search_frame, width=30, bd=4)
         self.entry_number.place(x=220, y=110)
 
-
-        #Кнопки поиска
-        name_button = Button(self.search_frame, text="   Поиск по имени   ", font='arial 20 bold', command=self.search_by_name)
+        # Кнопки поиска
+        name_button = Button(self.search_frame, text="   Поиск по имени   ", font='arial 20 bold',
+                             command=self.search_by_name)
         name_button.place(x=10, y=13)
-        surname_button = Button(self.search_frame, text="Поиск по фамилии ", font='arial 20 bold', command=self.search_by_surname)
+        surname_button = Button(self.search_frame, text="Поиск по фамилии ", font='arial 20 bold',
+                                command=self.search_by_surname)
         surname_button.place(x=10, y=63)
-        number_button = Button(self.search_frame, text="  Поиск по номеру  ", font='arial 20 bold', command=self.search_by_number)
+        number_button = Button(self.search_frame, text="  Поиск по номеру  ", font='arial 20 bold',
+                               command=self.search_by_number)
         number_button.place(x=10, y=113)
 
-        details_button = Button(self.bottom, text="          Детали          ", font='arial 20 bold', command = self.show_details)
+        details_button = Button(self.bottom, text="          Детали          ", font='arial 20 bold',
+                                command=self.show_details)
         details_button.place(x=180, y=20)
-        clean_button = Button(self.bottom, text="          Очистить          ", font='arial 20 bold', command = self.clean)
-        clean_button.place(x=170, y=60)
+        del_button = Button(self.bottom, text="          Удалить          ", font='arial 20 bold',
+                              command=self.delete_person)
+        del_button.place(x=175, y=60)
+        clean_button = Button(self.bottom, text="Очистить поиск", font='arial 20 bold',
+                            command=self.clean)
+        clean_button.place(x=5, y=20)
         quit_button = Button(self.bottom, text="         Выход         ", font='arial 20 bold', command=self.destroy)
         quit_button.place(x=190, y=100)
 
@@ -62,7 +69,6 @@ class Search(Toplevel):
         self.listBox.config(yscrollcommand=self.scroll.set)
         self.scroll.grid(row=0, column=1, sticky=N + S)
 
-
     def exit(self):
         self.destroy()
 
@@ -71,7 +77,7 @@ class Search(Toplevel):
         result = curs.execute("select * from phonebook where person_name regexp (?)", (name.upper(),))
         count = 0
         for i in result:
-            self.listBox.insert(count,str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
+            self.listBox.insert(count, str(i[0]) + "." + str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
             count += 1
 
     def search_by_surname(self):
@@ -79,7 +85,7 @@ class Search(Toplevel):
         result = curs.execute("select * from phonebook where person_surname regexp (?)", (surname.upper(),))
         count = 0
         for i in result:
-            self.listBox.insert(count, str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
+            self.listBox.insert(count, str(i[0]) + "." + str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
             count += 1
 
     def search_by_number(self):
@@ -89,7 +95,7 @@ class Search(Toplevel):
             result = curs.execute("select * from phonebook where tel_number regexp (?)", (number,))
             count = 0
             for i in result:
-                self.listBox.insert(count, str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
+                self.listBox.insert(count, str(i[0]) + "." + str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
                 count += 1
         else:
             mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
@@ -100,10 +106,27 @@ class Search(Toplevel):
         person_id = person.split(".")[0]
 
         details_page = Details(person_id)
-        self.destroy()
 
     def clean(self):
         self.listBox.delete(END)
-        self.entry_name.delete(0,END)
+        self.entry_name.delete(0, END)
         self.entry_surname.delete(0, END)
         self.entry_number.delete(0, END)
+
+    def delete_person(self):
+        selected_item = self.listBox.curselection()
+        person = self.listBox.get(selected_item)
+        person_id = person.split(".")[0]
+        query = "delete from phonebook where person_id = {}".format(person_id)
+        answer = mb.askyesno(title="Удалить", message="Удалить контакт?")
+        if answer == True:
+            try:
+                curs.execute(query)
+                conn.commit()
+                mb.showinfo("Success", "Контакт удалён")
+                self.destroy()
+
+            except Exception as e:
+                mb.showerror("Ошибка!", str(e))
+
+
