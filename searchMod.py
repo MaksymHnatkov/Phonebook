@@ -71,7 +71,7 @@ class Search(Toplevel):
         result = curs.execute("select * from phonebook where person_name regexp (?)", (name,))
         count = 0
         for i in result:
-            self.listBox.insert(count, str(i[0]) + ". " + str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
+            self.listBox.insert(count,str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
             count += 1
 
     def search_by_surname(self):
@@ -79,7 +79,7 @@ class Search(Toplevel):
         result = curs.execute("select * from phonebook where person_surname regexp (?)", (surname,))
         count = 0
         for i in result:
-            self.listBox.insert(count, str(i[0]) + ". " + str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
+            self.listBox.insert(count, str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
             count += 1
 
     def search_by_number(self):
@@ -89,7 +89,7 @@ class Search(Toplevel):
             result = curs.execute("select * from phonebook where tel_number regexp (?)", (number,))
             count = 0
             for i in result:
-                self.listBox.insert(count, str(i[0]) + ". " + str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
+                self.listBox.insert(count, str(i[1]) + " " + str(i[2]) + " " + str(i[3]))
                 count += 1
         else:
             mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
