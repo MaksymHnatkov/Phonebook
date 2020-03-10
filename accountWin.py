@@ -25,7 +25,7 @@ class Accounts (Toplevel):
 
         self.heading = Label(self.top, text='Контакты', font='arial 20 bold', bg='blue', fg='white')
         self.heading.place(x=180, y=25)
-        self.top_image = PhotoImage(file='icons/accounts.png')
+        self.top_image = PhotoImage(file='/Users/HomelessRacoon/PycharmProjects/Phonebook/icons/accounts.png')
         self.top_image_label = Label(self.top, image=self.top_image, bg='blue')
         self.top_image_label.place(x=100, y=8)
 

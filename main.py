@@ -13,7 +13,7 @@ class Application(object):
         self.bottom.pack(fill=X)
 
         # Иконка
-        self.top_image = PhotoImage(file='icons/phonebook.png')
+        self.top_image = PhotoImage(file='/Users/HomelessRacoon/PycharmProjects/Phonebook/icons/phonebook.png')
         self.top_image_label = Label(self.top, image=self.top_image, bg='blue')
         self.top_image_label.place(x=130, y=30)
 

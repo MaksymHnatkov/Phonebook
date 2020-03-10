@@ -28,7 +28,7 @@ class Search(Toplevel):
 
         self.heading = Label(self.top, text='Поиск контакта', font='arial 20 bold', bg='blue', fg='white')
         self.heading.place(x=210, y=45)
-        self.top_image = PhotoImage(file='icons/accounts.png')
+        self.top_image = PhotoImage(file='/Users/HomelessRacoon/PycharmProjects/Phonebook/icons/accounts.png')
         self.top_image_label = Label(self.top, image=self.top_image, bg='blue')
         self.top_image_label.place(x=130, y=18)
 

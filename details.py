@@ -30,7 +30,7 @@ class Details(Toplevel):
 
         self.heading = Label(self.top, text='      Детали контакта', font='arial 20 bold', bg='blue', fg='white')
         self.heading.place(x=160, y=35)
-        self.top_image = PhotoImage(file='icons/accounts.png')
+        self.top_image = PhotoImage(file='/Users/HomelessRacoon/PycharmProjects/Phonebook/icons/accounts.png')
         self.top_image_label = Label(self.top, image=self.top_image, bg='blue')
         self.top_image_label.place(x=80, y=18)
 
