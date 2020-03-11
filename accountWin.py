@@ -85,7 +85,7 @@ class Accounts (Toplevel):
                 curs.execute(query)
                 conn.commit()
                 mb.showinfo("Success", "Контакт удалён")
-                self.listBox.delete(END)
+                self.listBox.delete(ANCHOR)
 
             except Exception as e:
                 mb.showerror("Ошибка!", str(e))

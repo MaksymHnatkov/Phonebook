@@ -124,7 +124,7 @@ class Search(Toplevel):
                 curs.execute(query)
                 conn.commit()
                 mb.showinfo("Success", "Контакт удалён")
-                self.destroy()
+                self.listBox.delete(ANCHOR)
 
             except Exception as e:
                 mb.showerror("Ошибка!", str(e))
