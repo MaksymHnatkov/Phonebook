@@ -81,6 +81,7 @@ class AddAccounts(Toplevel):
                 elif match != None:
                     mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
                     self.entry_number.delete(0, END)
+                    conn.commit()
 
 
 
