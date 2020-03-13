@@ -84,9 +84,11 @@ class Update(Toplevel):
                 if answer == True and match == None:
                     conn.commit()
                     mb.showinfo("Сохранение", "Контакт успешно добавлен", icon='info')
-                else:
+                elif match != None:
                     mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
                     self.entry_number.delete(0, END)
+                elif answer != True:
+                    self.destroy()
 
             except Exception as e:
                 mb.showerror("Ошибка!", str(e))

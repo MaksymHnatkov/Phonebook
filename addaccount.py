@@ -78,9 +78,15 @@ class AddAccounts(Toplevel):
                     self.entry_comment.delete(0, END)
                     conn.commit()
                     mb.showinfo("Сохранение", "Контакт успешно добавлен", icon='info')
-                else:
+                elif match != None:
                     mb.showerror("Ошибка!", "Проверьте правильность написания номера!", icon='warning')
                     self.entry_number.delete(0, END)
+                elif answer != True:
+                    self.entry_name.delete(0, END)
+                    self.entry_surname.delete(0, END)
+                    self.entry_number.delete(0, END)
+                    self.entry_comment.delete(0, END)
+
 
             except Exception as e:
                 mb.showerror("Ошибка!", str(e))
