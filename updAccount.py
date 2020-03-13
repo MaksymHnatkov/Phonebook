@@ -34,28 +34,28 @@ class Update(Toplevel):
         self.top_image_label.place(x=80, y=18)
 
         # Имя
-        self.label_name = Label(self.bottom, text="Имя", font='arial 15', fg='white', bg='#c2c0ba')
+        self.label_name = Label(self.bottom, text="Имя", font='arial 15', fg='black', bg='#abedbc')
         self.label_name.place(x=98, y=43)
         self.entry_name = Entry(self.bottom, width=30, bd=4)
         self.entry_name.insert(0,person_name)
         self.entry_name.place(x=147, y=40)
 
         # Фамилия
-        self.label_surname = Label(self.bottom, text="Фамилия", font='arial 15', fg='white', bg='#c2c0ba')
+        self.label_surname = Label(self.bottom, text="Фамилия", font='arial 15', fg='black', bg='#abedbc')
         self.label_surname.place(x=62, y=83)
         self.entry_surname = Entry(self.bottom, width=30, bd=4)
         self.entry_surname.insert(0, person_surname)
         self.entry_surname.place(x=147, y=80)
 
         # Номер
-        self.label_number = Label(self.bottom, text="Номер телефона", font='arial 15', fg='white', bg='#c2c0ba')
+        self.label_number = Label(self.bottom, text="Номер телефона", font='arial 15', fg='black', bg='#abedbc')
         self.label_number.place(x=7, y=123)
         self.entry_number = Entry(self.bottom, width=30, bd=4)
         self.entry_number.insert(0, person_number)
         self.entry_number.place(x=147, y=120)
 
         # Комментарии
-        self.label_comment = Label(self.bottom, text="Комментарии", font='arial 15', fg='white', bg='#c2c0ba')
+        self.label_comment = Label(self.bottom, text="Комментарии", font='arial 15', fg='black', bg='#abedbc')
         self.label_comment.place(x=32, y=163)
         self.entry_comment = Entry(self.bottom, width=30, bd=4)
         self.entry_comment.insert(0, comment)
